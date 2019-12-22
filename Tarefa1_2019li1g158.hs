@@ -63,9 +63,9 @@ divideListaEmMatriz n l  = let tam   =  length l `div` n
 
 
 -- | Dada uma peça, devolve a altura final da mesma
-getAltura :: Peca -> Int
-getAltura (Recta _ x)   = x
-getAltura (Rampa _ _ x) = x
+getAlturaFinalPeca :: Peca -> Int
+getAlturaFinalPeca (Recta _ x)   = x
+getAlturaFinalPeca (Rampa _ _ x) = x
 
 -- | Dada uma peça, devole o piso da mesma
 getPiso :: Peca -> Piso
@@ -74,12 +74,12 @@ getPiso (Rampa p _ _) = p
 
 -- | Dado um par e a peça anterior, devolve a peça correspondente as caraterísticas do par indicado
 getPeca :: (Int, Int) -> Peca -> Peca
-getPeca (x, y) p | y == 0 || y == 1 = Rampa (descobrePiso x p) (getAltura p) ((getAltura p)+(y+1))
-                 | y >= 2 && y <= 5 && getAltura p == 0 = Recta (descobrePiso x p) 0
-                 | y >= 2 && y <= 5 && getAltura p /= 0 = let h = getAltura p - (y-1)
-                                                          in if h < 0 then Rampa (descobrePiso x p) (getAltura p) 0
-                                                             else Rampa (descobrePiso x p) (getAltura p) h
-                 | otherwise                            = Recta (descobrePiso x p) (getAltura p)
+getPeca (x, y) p | y == 0 || y == 1 = Rampa (descobrePiso x p) (getAlturaFinalPeca p) ((getAlturaFinalPeca p)+(y+1))
+                 | y >= 2 && y <= 5 && getAlturaFinalPeca p == 0 = Recta (descobrePiso x p) 0
+                 | y >= 2 && y <= 5 && getAlturaFinalPeca p /= 0 = let h = getAlturaFinalPeca p - (y-1)
+                                                          in if h < 0 then Rampa (descobrePiso x p) (getAlturaFinalPeca p) 0
+                                                             else Rampa (descobrePiso x p) (getAlturaFinalPeca p) h
+                 | otherwise                            = Recta (descobrePiso x p) (getAlturaFinalPeca p)
 
 -- | Dada uma lista de pares e a peca inicial, devolde a pista correspondente
 geraPista :: [(Int,Int)] -> Peca -> Pista

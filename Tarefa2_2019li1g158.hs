@@ -8,11 +8,11 @@ import Tarefa0_2019li1g158
 
 -- Jogadores para teste
 
-jogador1 = Jogador 0 3.2 0 0 (Chao True)
+jogador1 = Jogador 0 3.2 3 0 (Chao True)
 
-jogador2 = Jogador 1 3.6 0 5 (Chao False)
+jogador2 = Jogador 1 3.6 4 5 (Chao False)
 
-jogador3 = Jogador 0 3.6 0 0 (Ar 3 78 0)
+jogador3 = Jogador 0 3.6 7 0 (Ar 3 23 0)
 
 jogador4 = Jogador 0 3.6 0 2 (Morto 1)
 
@@ -155,7 +155,7 @@ moverJogador (Jogador p dist v c est) dir m = let altAnt  = getAltura (dist - fr
                                                   then Jogador (p+dir) dist v c est
                                                   else if altAnt > alt
                                                        then Jogador (p+dir) dist v c (Ar altAnt (getInclinacao pecaAnt) 0)
-                                                       else Jogador p dist v c (Morto 1)
+                                                       else Jogador p dist 0 c (Morto 1)
 
 -- | Dada uma peça, devolve a inclinação da mesma
 getInclinacao :: Peca -> Double

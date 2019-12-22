@@ -1,4 +1,4 @@
--- | Este módulo define os tipos de dados comuns a todos os alunos, tal como descrito e utilizado no enunciado do trabalho prático. 
+-- | Este módulo define os tipos de dados comuns a todos os alunos, tal como descrito e utilizado no enunciado do trabalho prático.
 module LI11920 where
 
 -- * Tipos de dados auxiliares.
@@ -46,7 +46,7 @@ data Jogada
     | Desacelera
     | Dispara -- ^ cola
   deriving (Read,Show,Eq)
-    
+
 type Instrucoes = [Instrucao]
 
 data Instrucao
