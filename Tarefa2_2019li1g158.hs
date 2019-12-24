@@ -155,7 +155,7 @@ moverJogador (Jogador p dist v c est) dir m = let altAnt  = getAltura (dist - fr
                                                   then Jogador (p+dir) dist v c est
                                                   else if altAnt > alt
                                                        then Jogador (p+dir) dist v c (Ar altAnt (getInclinacao pecaAnt) 0)
-                                                       else Jogador p dist 0 c (Morto 1)
+                                                       else Jogador p dist v c (Morto 1)
 
 -- | Dada uma peça, devolve a inclinação da mesma
 getInclinacao :: Peca -> Double
